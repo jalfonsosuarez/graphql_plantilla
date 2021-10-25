@@ -1,10 +1,8 @@
-import { makeExecutableSchema } from "@graphql-tools/schema";
-import { ApolloServer, gql } from "apollo-server-express";
-import compression from "compression";
-import express, { Application } from "express";
-import { GraphQLSchema } from "graphql";
-import { createServer, Server } from "http";
-import schema from './schema/index';
+import { ApolloServer } from 'apollo-server-express';
+import compression from 'compression';
+import express, { Application } from 'express';
+import { GraphQLSchema } from 'graphql';
+import { createServer, Server } from 'http';
 
 class GraphQLServer {
   // Propiedades
@@ -15,9 +13,9 @@ class GraphQLServer {
 
   constructor( schema?: GraphQLSchema ) {
     if ( !schema || schema === undefined ) {
-        throw new Error( "No se ha proporcionado el schema de GraphQL" );
+        throw new Error( 'No se ha proporcionado el schema de GraphQL' );
     }
-    this.schema = schema
+    this.schema = schema;
     this.init();
   }
 
@@ -46,12 +44,12 @@ class GraphQLServer {
   }
 
   private configRoutes() {
-    this.app.get("/hello", (_, res) => {
-        res.send("¡Hola mundo!");
+    this.app.get('/hello', (_, res) => {
+        res.send('¡Hola mundo!');
       });
   
-      this.app.get("/", (_, res) => {
-        res.redirect("/graphql");
+      this.app.get('/', (_, res) => {
+        res.redirect('/graphql');
       });  
   }
 
